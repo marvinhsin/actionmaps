@@ -1,18 +1,22 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Representative do
   describe 'civic_api_to_representative_params' do
+    let!(:existing_rep) { described_class.create!(name: 'Taylor Swift', ocdid: '123', title: 'Senator') }
+    let(:official) { OpenStruct.new(name: 'Taylor Swift') }
+    let(:office) { OpenStruct.new(name: 'Senator', division_id: '123', official_indices: [0]) }
+    let(:rep_info) { OpenStruct.new(officials: [official], offices: [office]) }
+
     after do
       DatabaseCleaner.clean
     end
 
-    it 'does not add an addition record for an existing representative' do
-	existing_rep = Representative.create!(name: 'Taylor Swift', ocdid: '123', title: 'Senator')
-	rep_info = double('rep_info', officials: [double('official', name: 'Taylor Swift')], offices: [double('office', name: 'Senator', division_id: '123', official_indices: [0])])
-	
-	Representative.civic_api_to_representative_params(rep_info)
-	expect(Representative.count).to eq(1)
+    it 'does not add an additional record for an existing representative' do
+      described_class.civic_api_to_representative_params(rep_info)
+      expect(described_class.count).to eq(1)
+      expect(described_class.last).to eq(existing_rep)
     end
   end
 end
-
