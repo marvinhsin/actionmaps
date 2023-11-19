@@ -34,7 +34,7 @@ class Representative < ApplicationRecord
       party = official.party if official.party
       photo_url = official.photo_url if official.photo_url
 
-      rep = Representative.create!(
+      rep = Representative.find_or_create_by(
         {
           name:      official.name,
           ocdid:     ocdid_temp,
@@ -47,6 +47,7 @@ class Representative < ApplicationRecord
           photo_url: photo_url
         }
       )
+
       reps.push(rep)
     end
 
