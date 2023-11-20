@@ -90,38 +90,66 @@ Then("I should see Joseph R. Biden's profile photo") do
   expect(page).to have_css(image_selector)
 end
 
-When('I read a news item mentioning a representative') do
-  pending # Write code here that turns the phrase above into concrete actions
+Given('a representative named {string} exists with a news item') do |name|
+  @representative = Representative.create!(
+    name:      name,
+    ocdid:     'ocd-division/country:us',
+    title:     'Position Title',
+    street:    '123 Main St',
+    city:      'Anytown',
+    state:     'State',
+    zip:       '12345',
+    party:     'Political Party',
+    photo_url: 'https://example.com/photo.jpg'
+  )
+  NewsItem.create!(
+    title:             'News Title',
+    link:              'https://example.com/news-item',
+    description:       "Article description with #{name}",
+    representative_id: @representative.id
+  )
+end
+
+When('I read a news item mentioning {string}') do |name|
+  representative = Representative.find_by(name: name)
+  visit representative_news_items_path(representative)
+
+  first_info_button = find('tbody tr:first-child .btn-info')
+  first_info_button.click
 end
 
 When("I click on the representative's name in the news item") do
-  pending # Write code here that turns the phrase above into concrete actions
+  click_link @representative.name
 end
 
+# Then Step: Check redirection to the representative's profile page
 Then("I should be redirected to the representative's profile page") do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(page).to have_current_path(representative_path(@representative))
 end
 
+# Then Steps: Verify representative's information is displayed correctly
 Then("I should see the representative's name") do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(page).to have_content(@representative.name)
 end
 
 Then("I should see the representative's OCD ID") do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(page).to have_content(@representative.ocdid)
 end
 
 Then("I should see the representative's office") do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(page).to have_content(@representative.title)
 end
 
 Then("I should see the representative's contact address") do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(page).to have_content(@representative.street)
+  full_address = [@representative.city, @representative.state, @representative.zip].join(', ')
+  expect(page).to have_content(full_address)
 end
 
 Then("I should see the representative's political party") do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(page).to have_content(@representative.party)
 end
 
 Then("I should see a representative's profile photo") do
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(page).to have_css("img[src*='#{@representative.photo_url}']")
 end

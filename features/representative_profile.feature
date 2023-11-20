@@ -27,7 +27,8 @@ Scenario: Access Representative's Profile from Search
   And I should see Joseph R. Biden's profile photo
 
 Scenario: Access Representative's Profile from News Items
-  When I read a news item mentioning a representative
+  Given a representative named "John A" exists with a news item
+  When I read a news item mentioning "John A"
   And I click on the representative's name in the news item
   Then I should be redirected to the representative's profile page
   And I should see the representative's name
