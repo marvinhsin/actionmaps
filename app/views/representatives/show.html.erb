@@ -1,0 +1,23 @@
+
+
+<main role="main" class="container my-5">
+  <div class="jumbotron">
+    <div class="row">    
+      <div class="col-4">
+        <img class="img-fluid img-thumbnail" src="<%= @representative.photo_url.nil? || @representative.photo_url.empty? ? 'https://mayzamudio.github.io/acmccc/img/member/user.jpg' : @representative.photo_url %>" alt="Representative Photo">
+      </div>
+      <div class="col-8"><h2 class="card-title">
+        <h1><%= @representative.name %></h1>
+        <h2 class="text-muted"><%= @representative.title %></h2>
+        <h3 class="text-muted"><%= @representative.ocdid %></h3>
+        <hr>
+        <p class="lead"><strong>Party:</strong></p> 
+        <p class="lead"><%= @representative.party %></p>
+        <p class="lead"><strong>Address:</strong></p> 
+        <p class="lead"><%= @representative.street %></p> 
+        <p class="lead mb-5"><%= @representative.city %>, <%= @representative.state %>, <%= @representative.zip %></p> 
+      </div>
+    </div>
+  </div>
+</main>
+
