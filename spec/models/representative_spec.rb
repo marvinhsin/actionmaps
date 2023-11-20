@@ -35,7 +35,6 @@ describe Representative do
 
     it 'does not add an additional record for an existing representative' do
       described_class.civic_api_to_representative_params(rep_info)
-      puts described_class.all.inspect
 
       expect(described_class.count).to eq(1)
       expect(described_class.last).to eq(existing_rep)
