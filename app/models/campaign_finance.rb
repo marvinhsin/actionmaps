@@ -10,10 +10,10 @@ class CampaignFinance < ApplicationRecord
       faraday.adapter Faraday.default_adapter
     end
 
-    response = conn.get("candidates/#{cycle}/#{category}.json")
+    response = conn.get("#{cycle}/candidates/leaders/#{category}.json")
 
     parsed_data = JSON.parse(response.body)
 
-    top_candidates_data = parsed_data['results']
-  end    
+    parsed_data['results']
+  end
 end
