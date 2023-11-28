@@ -1,0 +1,26 @@
+- cycle_option = %w[2010 2012 2014 2016 2018 2020]
+- category_option = ['Candidate Loan', 'Contribution Total', 'Debts Owed', 'Disbursements Total', 'End Cash',
+                     'Individual Total', 'PAC Total', 'Receipts Total', 'Refund Total']
+
+.row.mt-2
+    .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
+        %h1.text-center Search for campaign finance
+
+    .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
+        = form_tag search_campaign_finance_path, method: :get do
+            .form-group.row
+                .col-md-4
+                    %label.col-form-label
+                        Cycle:
+                    %select{ name: 'cycle' }
+                        - cycle_option.each do |option|
+                            %option= option
+                .col-md-7
+                    %label.col-form-label
+                        Category:
+                    %select{ name: 'category' }
+                        - category_option.each do |option|
+                            %option= option
+
+            .actions
+                = submit_tag 'Search', class: 'btn btn-primary'
