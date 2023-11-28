@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
-class CampaignFinancesController < ApplicationController
-  def index
-  end
+class CampaignFinanceController < ApplicationController
+  def index; end
 
-  def show
-  end
+  def show; end
 
   def search
     cycle = params[:cycle]
