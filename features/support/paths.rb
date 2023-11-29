@@ -17,6 +17,8 @@ module NavigationHelpers
       '/'
     when /^the California state\s?page$/
       '/state/CA'
+    when /^search page for representatives$/
+      '/representatives'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
