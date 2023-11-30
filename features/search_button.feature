@@ -10,4 +10,9 @@ Background: On the home page
   Scenario: Search representatives
     Then I should see "All Representatives"
     And I follow "All Representatives"
-    Then I go to search page for representatives
+    Then I go to the representatives search page
+
+  Scenario: Search campaign finance
+    Then I should see "All Campaign Finance"
+    And I follow "All Campaign Finance"
+    Then I go to the campaign finance search page
