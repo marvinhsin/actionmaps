@@ -17,7 +17,7 @@ module NavigationHelpers
       '/'
     when /^the California state\s?page$/
       '/state/CA'
-    when /^search page for representatives$/
+    when /^the representatives search page$/
       '/representatives'
     when /^the campaign finance search page$/
       '/campaign_finance'
