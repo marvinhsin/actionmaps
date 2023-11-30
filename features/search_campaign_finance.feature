@@ -9,8 +9,8 @@ Background: On the page of campaign finance search
   Given I am on the campaign finance search page
 
   Scenario: Search campaign finance
-    Then I should see "Cycle"
+    Then I should see "Search for Campaign Finance"
+    And I should see "Cycle"
     And I should see "Category"
-    # Then I select "2020" from "Cycle"
-    # And I select "Contribution Total"
-    # And I press "Search"
+    And I press "Search"
+    Then I should see "Please select both election cycle and category."
