@@ -7,6 +7,11 @@ political events in their area as well as aggregate, share and view news items i
 
 </div>
 
+## Demo
+
+https://drive.google.com/file/d/1DiqelS8okKbizI8G0B0MKSUylnfnWDyW/view?usp=sharing
+
+
 <!-- TODO: Update these for your repo! -->
 
 [![All Specs](https://github.com/cs169/fa23-chips-10.5-25/actions/workflows/specs.yml/badge.svg)](https://github.com/cs169/fa23-chips-10.5-25/actions/workflows/specs.yml)
@@ -18,3 +23,8 @@ political events in their area as well as aggregate, share and view news items i
 ### Getting Setup Locally
 
 Follow the [Getting Started Guide](./docs/01-getting-started.md) to get your localhost environment setup.
+
+## Credits
+@dactualchung
+@Yan-Muzi
+@MayZamudio
